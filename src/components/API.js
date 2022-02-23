@@ -11,9 +11,9 @@ import { useState, useEffect, useContext } from "react";
 // CONTEXT
 import { CityContext } from "../context/CityContext";
 
-export default function API() {
+export default function API(props) {
   const [loading, setLoading] = useState(true);
-  const [weather, setWeather] = useState("");
+  const [weather, setWeather] = useState([]);
   const cityInfo = useContext(CityContext);
 
   useEffect(() => {

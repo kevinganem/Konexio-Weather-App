@@ -9,4 +9,4 @@
 // REACT
 import { createContext } from "react";
 
-export const CityContext = createContext({ city: "" });
+export const CityContext = createContext({ city: "", favorites: [] });

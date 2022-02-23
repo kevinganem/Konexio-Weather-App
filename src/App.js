@@ -26,6 +26,7 @@ import { CityContext } from "./context/CityContext";
 export default function App() {
   const [city, setCity] = useState("Paris");
   const [favorites, setFavorites] = useState([]);
+
   const value = {
     city: city,
     setCity: setCity,
