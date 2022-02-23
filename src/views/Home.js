@@ -35,6 +35,16 @@ export default function Home() {
   const handleCity = () => {
     cityInfo.setCity(Search);
   };
+  const handleFavorite = () => {
+    if (cityInfo.favorites.length < 3) {
+      cityInfo.setFavorites((prevState) => {
+        return [...prevState, cityInfo.city];
+      });
+      console.log(cityInfo.favorites);
+    } else {
+      return alert("Maximum of 3 cities in your favorites");
+    }
+  };
 
   return (
     <>
@@ -49,6 +59,7 @@ export default function Home() {
         />
         {<span>{errors.city?.message}</span>}
         <button onClick={handleCity}>Search</button>
+        <button onClick={handleFavorite}>Favorite</button>
       </form>
       <API></API>
     </>

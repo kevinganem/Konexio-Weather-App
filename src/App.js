@@ -7,7 +7,7 @@
 // --------------------------------------------------------------------------- //
 
 // REACT
-import { useState, useEffect, useContext, createContext } from "react";
+import { useState } from "react";
 // ROUTER
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 // CONTEXT
@@ -15,7 +15,7 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 // CSS
 
 // COMPONENTS
-import API from "./components/API";
+// import API from "./components/API";
 // VIEWS
 import Home from "./views/Home";
 import Favorites from "./views/Favorites";
@@ -25,10 +25,14 @@ import { CityContext } from "./context/CityContext";
 
 export default function App() {
   const [city, setCity] = useState("Paris");
+  const [favorites, setFavorites] = useState([]);
   const value = {
     city: city,
     setCity: setCity,
+    favorites: favorites,
+    setFavorites: setFavorites,
   };
+
   return (
     <CityContext.Provider value={value}>
       <BrowserRouter>

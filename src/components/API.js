@@ -19,7 +19,7 @@ export default function API() {
   useEffect(() => {
     console.log("Initializing");
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${cityInfo.city}&appid=ad8626239bcb7decd5836f5d1b59e222`
+      `http://api.openweathermap.org/data/2.5/weather?q=${cityInfo.city}&units=metric&appid=ad8626239bcb7decd5836f5d1b59e222`
     )
       .then((res) => res.json())
       .then((result) => {
