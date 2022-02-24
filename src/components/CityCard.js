@@ -9,6 +9,7 @@
 // CSS
 import styled from "styled-components";
 import { useSpring, animated, config } from "react-spring";
+import "../App.css";
 
 export default function CityCard(props) {
   const [prop, set] = useSpring(() => ({
@@ -51,15 +52,15 @@ export default function CityCard(props) {
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  margin: 1rem;
+  padding: 1.5rem;
 `;
 
 const ContainerCard = styled(animated.div)`
   width: 200px;
   height: 365px;
   display: inline-block;
-  padding: 4rem;
-  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+  background-color: rgba(255, 255, 255, 0.1);
+  background-size: contain;
   border-radius: 10px;
   z-index: 1;
   backdrop-filter: blur(10px);
@@ -67,23 +68,25 @@ const ContainerCard = styled(animated.div)`
   background-clip: border-box;
   cursor: pointer;
   text-align: center;
+  color: white;
+  padding: 2rem;
 `;
 
 const StyledImg = styled.img`
-  width: 200px;
+  width: 150px;
   height: auto;
   border-radius: 50%;
 `;
 
 const StyledH1 = styled.h1`
-  line-height: 1.5;
+  font-size: 2.5rem;
   letter-spacing: 1.5;
-  font-family: "Gilroy";
+  font-family: "Montserrat";
 `;
 
 const StyledH3 = styled.h3`
   line-height: 1.5;
   letter-spacing: 1.15;
-  font-family: "Gilroy";
-  font-size: 20px;
+  font-family: "Montserrat";
+  font-size: 1.5rem;
 `;

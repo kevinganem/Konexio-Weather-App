@@ -92,13 +92,14 @@ const ButtonDiv = styled.div`
 `;
 
 const Button = styled.button`
-  color: palevioletred;
+  color: white;
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-  background-color: white;
+  border: 2px solid white;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0);
+  height: 2.5rem;
 `;
 
 const Span = styled.span`
