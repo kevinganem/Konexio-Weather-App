@@ -14,6 +14,9 @@ import { CityContext } from "../context/CityContext";
 // CSS
 import styled from "styled-components";
 import "../App.css";
+// TOASTIFY
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // COMPONENTS
 import API from "../components/API";
 
@@ -25,6 +28,7 @@ export default function Home() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const notify = () => toast("🦄 Added to favorites! 🦄");
 
   const onSubmit = (data) => console.log(data);
   const handleSearch = (event) => {
@@ -36,6 +40,7 @@ export default function Home() {
   const handleFavorite = () => {
     if (cityInfo.favorites.length < 3) {
       cityInfo.setFavorites((prevState) => {
+        notify();
         return [...prevState, cityInfo.city];
       });
       console.log(cityInfo.favorites);
@@ -62,6 +67,7 @@ export default function Home() {
         <ButtonDiv>
           <Button onClick={handleCity}>Search</Button>
           <Button onClick={handleFavorite}>Favorite</Button>
+          <ToastContainer />
         </ButtonDiv>
       </form>
       <API></API>
