@@ -12,6 +12,7 @@ import { useState, useContext, useEffect } from "react";
 import { CityContext } from "../context/CityContext";
 // CSS
 import styled from "styled-components";
+import "../App.css";
 // COMPONENTS
 import CityCard from "../components/CityCard";
 // VIEWS
@@ -24,7 +25,11 @@ export default function Favorites() {
   const card = () => {
     return data.length > 0
       ? data.map((res, i) => {
-          return <CityCard key={i} info={res} />;
+          return (
+            <div key={i}>
+              <CityCard onClick={removeFavorites} index={i} info={res} />;
+            </div>
+          );
         })
       : null;
   };
@@ -33,6 +38,13 @@ export default function Favorites() {
     return setData((prevState) => {
       return [...prevState, dataMap];
     });
+  }
+
+  function removeFavorites(param) {
+    cityInfo.favorites.splice(param, 1);
+    console.log(data);
+    setData([]);
+    card();
   }
 
   useEffect(() => {
@@ -45,8 +57,6 @@ export default function Favorites() {
           .then((res) => {
             handleData(res);
             setLoading(false);
-            console.log("result :", res);
-            console.log("setData :", setData);
           })
           .catch((err) => console.log(err));
       });
@@ -55,7 +65,17 @@ export default function Favorites() {
     }
   }, [cityInfo.favorites]);
 
-  return loading ? <p>Loading...</p> : <Container>{card()}</Container>;
+  return loading ? (
+    <Container>
+      <div className="lds-facebook">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </Container>
+  ) : (
+    <Container>{card()}</Container>
+  );
 }
 
 // CSS PART

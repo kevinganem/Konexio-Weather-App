@@ -12,6 +12,9 @@ import { useState, useEffect, useContext } from "react";
 import { CityContext } from "../context/CityContext";
 // COMPONENTS
 import CityCard from "./CityCard";
+// CSS
+import "../App.css";
+import styled from "styled-components";
 
 export default function API(props) {
   const [loading, setLoading] = useState(true);
@@ -27,9 +30,26 @@ export default function API(props) {
       .then((result) => {
         setWeather(result);
         setLoading(false);
-        console.log(result);
       });
   }, [cityInfo.city]);
 
-  return loading ? <p>Loading...</p> : <CityCard info={weather}></CityCard>;
+  return loading ? (
+    <Container>
+      <div className="lds-facebook">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </Container>
+  ) : (
+    <CityCard info={weather}></CityCard>
+  );
 }
+
+// CSS PART
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+`;

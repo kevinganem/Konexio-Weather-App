@@ -57,8 +57,8 @@ export default function Home() {
             type="text"
             onChange={handleSearch}
           />
-          {<Span>{errors.city?.message}</Span>}
         </InputDiv>
+        <SpanDiv>{<Span>{errors.city?.message}</Span>}</SpanDiv>
         <ButtonDiv>
           <Button onClick={handleCity}>Search</Button>
           <Button onClick={handleFavorite}>Favorite</Button>
@@ -94,6 +94,11 @@ const Button = styled.button`
   border-radius: 6px;
   background-color: rgba(255, 255, 255, 0);
   height: 2.5rem;
+`;
+
+const SpanDiv = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 const Span = styled.span`

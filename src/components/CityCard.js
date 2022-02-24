@@ -30,8 +30,9 @@ export default function CityCard(props) {
         onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
         onMouseLeave={() => set({ xys: [0, 0, 1] })}
         style={{
-          transform: prop.xys.interpolate(trans),
+          transform: prop.xys.to(trans),
         }}
+        onClick={() => props.onClick(props.index)}
       >
         <StyledImg
           src={`http://openweathermap.org/img/wn/${props.info.weather[0].icon}@2x.png`}
@@ -61,7 +62,7 @@ const ContainerCard = styled(animated.div)`
   display: inline-block;
   background-color: rgba(255, 255, 255, 0.1);
   background-size: contain;
-  border-radius: 10px;
+  border-radius: 20px;
   z-index: 1;
   backdrop-filter: blur(10px);
   border: 2px solid transparent;
