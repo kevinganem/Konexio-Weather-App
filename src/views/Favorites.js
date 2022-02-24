@@ -8,14 +8,11 @@
 
 // REACT
 import { useState, useContext, useEffect } from "react";
-// ROUTER
-
 // CONTEXT
 import { CityContext } from "../context/CityContext";
 // CSS
 import styled from "styled-components";
 // COMPONENTS
-// import API from "../components/API";
 import CityCard from "../components/CityCard";
 // VIEWS
 
@@ -50,7 +47,6 @@ export default function Favorites() {
             setLoading(false);
             console.log("result :", res);
             console.log("setData :", setData);
-            console.log("data :", data);
           })
           .catch((err) => console.log(err));
       });

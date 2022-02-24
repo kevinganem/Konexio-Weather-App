@@ -10,13 +10,9 @@
 import { useState } from "react";
 // ROUTER
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-// CONTEXT
-
 // CSS
 import styled from "styled-components";
 import "./App.css";
-// COMPONENTS
-// import API from "./components/API";
 // VIEWS
 import Home from "./views/Home";
 import Favorites from "./views/Favorites";

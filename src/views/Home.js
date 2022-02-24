@@ -9,19 +9,13 @@
 // REACT
 import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
-// ROUTER
-
 // CONTEXT
 import { CityContext } from "../context/CityContext";
 // CSS
 import styled from "styled-components";
 import "../App.css";
-// FONTAWESOME
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 // COMPONENTS
 import API from "../components/API";
-// VIEWS
 
 export default function Home() {
   const [Search, setSearch] = useState("");
@@ -63,12 +57,12 @@ export default function Home() {
             type="text"
             onChange={handleSearch}
           />
-          <ButtonDiv>
-            <Button onClick={handleCity}>Search</Button>
-            <Button onClick={handleFavorite}>Favorite</Button>
-          </ButtonDiv>
           {<Span>{errors.city?.message}</Span>}
         </InputDiv>
+        <ButtonDiv>
+          <Button onClick={handleCity}>Search</Button>
+          <Button onClick={handleFavorite}>Favorite</Button>
+        </ButtonDiv>
       </form>
       <API></API>
     </>
