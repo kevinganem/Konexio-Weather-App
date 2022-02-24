@@ -13,9 +13,9 @@ import { useState, useContext, useEffect } from "react";
 // CONTEXT
 import { CityContext } from "../context/CityContext";
 // CSS
-
+import styled from "styled-components";
 // COMPONENTS
-import API from "../components/API";
+// import API from "../components/API";
 import CityCard from "../components/CityCard";
 // VIEWS
 
@@ -59,5 +59,13 @@ export default function Favorites() {
     }
   }, [cityInfo.favorites]);
 
-  return loading ? <p>Loading...</p> : <div>{card()}</div>;
+  return loading ? <p>Loading...</p> : <Container>{card()}</Container>;
 }
+
+// CSS PART
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+`;

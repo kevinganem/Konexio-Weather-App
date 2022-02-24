@@ -10,6 +10,8 @@
 import { useState, useEffect, useContext } from "react";
 // CONTEXT
 import { CityContext } from "../context/CityContext";
+// COMPONENTS
+import CityCard from "./CityCard";
 
 export default function API(props) {
   const [loading, setLoading] = useState(true);
@@ -29,13 +31,5 @@ export default function API(props) {
       });
   }, [cityInfo.city]);
 
-  return loading ? (
-    <p>Loading...</p>
-  ) : (
-    <div>
-      <p>{weather.name}</p>
-      <p>{weather.weather[0].main}</p>
-      <p>{weather.main.temp}</p>
-    </div>
-  );
+  return loading ? <p>Loading...</p> : <CityCard info={weather}></CityCard>;
 }

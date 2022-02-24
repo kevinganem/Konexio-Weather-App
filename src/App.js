@@ -13,7 +13,7 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 // CONTEXT
 
 // CSS
-
+import styled from "styled-components";
 // COMPONENTS
 // import API from "./components/API";
 // VIEWS
@@ -37,24 +37,59 @@ export default function App() {
   return (
     <CityContext.Provider value={value}>
       <BrowserRouter>
-        <nav className="">
-          <Link className="" to="/">
-            Home
+        <NavBar>
+          <Link className="link" to="/">
+            <NavLink>Home</NavLink>
           </Link>
-          <Link className="" to="/favorites">
-            Favorites
+          <Link className="link" to="/favorites">
+            <NavLink>Favorites</NavLink>
           </Link>
-        </nav>
+        </NavBar>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/favorites" component={Favorites} />
           <Route path="*" component={NotFound} />
         </Switch>
-        <footer>
-          <p>Kevin GANEM</p>
-          <p>{new Date().toLocaleDateString("fr")}</p>
-        </footer>
+        <Footer>
+          <Para>Kevin GANEM</Para>
+          <Para>{new Date().toLocaleDateString("fr")}</Para>
+        </Footer>
       </BrowserRouter>
     </CityContext.Provider>
   );
 }
+
+// CSS PART
+
+const NavBar = styled.nav`
+  width: 100%;
+  height: 4rem;
+  background-color: yellow;
+  font-size: 18px;
+  text-align: center;
+  display: flex;
+  flex-direction: inline;
+  justify-content: center;
+  border: 1px solid black;
+`;
+
+const NavLink = styled.h1`
+  margin: 1rem;
+  color: blue;
+`;
+
+const Footer = styled.footer`
+  display: flex;
+  flex-direction: inline;
+  height: 4rem;
+  background-color: yellow;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  border: 1px solid black;
+`;
+
+const Para = styled.p`
+  margin: 1rem;
+  color: blue;
+`;

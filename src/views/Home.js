@@ -14,6 +14,10 @@ import { useForm } from "react-hook-form";
 // CONTEXT
 import { CityContext } from "../context/CityContext";
 // CSS
+import styled from "styled-components";
+import "../App.css";
+// FONTAWESOME
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // COMPONENTS
 import API from "../components/API";
@@ -49,19 +53,54 @@ export default function Home() {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          {...register("city", {
-            required: "This is required",
-          })}
-          placeholder="Type a city"
-          type="text"
-          onChange={handleSearch}
-        />
-        {<span>{errors.city?.message}</span>}
-        <button onClick={handleCity}>Search</button>
-        <button onClick={handleFavorite}>Favorite</button>
+        <InputDiv>
+          <input
+            className="input"
+            {...register("city", {
+              required: "This is required",
+            })}
+            placeholder="Enter city..."
+            type="text"
+            onChange={handleSearch}
+          />
+          <ButtonDiv>
+            <Button onClick={handleCity}>Search</Button>
+            <Button onClick={handleFavorite}>Favorite</Button>
+          </ButtonDiv>
+          {<Span>{errors.city?.message}</Span>}
+        </InputDiv>
       </form>
       <API></API>
     </>
   );
 }
+
+// CSS PART
+
+const InputDiv = styled.div`
+  width: 40%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ButtonDiv = styled.div`
+  margin: auto;
+  display: flex;
+  justify-content: center;
+`;
+
+const Button = styled.button`
+  color: palevioletred;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+  background-color: white;
+`;
+
+const Span = styled.span`
+  color: red;
+`;
