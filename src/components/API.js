@@ -35,7 +35,8 @@ export default function API(props) {
 
   return loading ? (
     <Container>
-      <div className="lds-facebook">
+      <div class="lds-ring">
+        <div></div>
         <div></div>
         <div></div>
         <div></div>

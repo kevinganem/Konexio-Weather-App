@@ -15,7 +15,6 @@ import styled from "styled-components";
 import "../App.css";
 // COMPONENTS
 import CityCard from "../components/CityCard";
-// VIEWS
 
 export default function Favorites() {
   const cityInfo = useContext(CityContext);
@@ -41,10 +40,11 @@ export default function Favorites() {
   }
 
   function removeFavorites(param) {
-    cityInfo.favorites.splice(param, 1);
-    console.log(data);
-    setData([]);
-    card();
+    cityInfo.setFavorites((prevState) => {
+      let array = prevState;
+      array.splice(param, 1);
+      return array;
+    });
   }
 
   useEffect(() => {
@@ -67,7 +67,8 @@ export default function Favorites() {
 
   return loading ? (
     <Container>
-      <div className="lds-facebook">
+      <div class="lds-ring">
+        <div></div>
         <div></div>
         <div></div>
         <div></div>

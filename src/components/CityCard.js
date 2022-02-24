@@ -12,6 +12,7 @@ import { useSpring, animated, config } from "react-spring";
 import "../App.css";
 
 export default function CityCard(props) {
+  // ----------------- DRAG ANIMATION --------------- \\
   const [prop, set] = useSpring(() => ({
     xys: [0, 0, 1],
     config: config.default,
@@ -23,26 +24,30 @@ export default function CityCard(props) {
   ];
   const trans = (x, y, s) =>
     `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+  // ----------------- END OF DRAG ANIMATION --------------- \\
 
   return (
     <Container>
       <ContainerCard
+        // ----------------- DRAG ANIMATION --------------- \\
         onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
         onMouseLeave={() => set({ xys: [0, 0, 1] })}
         style={{
           transform: prop.xys.to(trans),
         }}
+        // ----------------- END OF DRAG ANIMATION --------------- \\
+
         onClick={() => props.onClick(props.index)}
       >
         <StyledImg
-          src={`http://openweathermap.org/img/wn/${props.info.weather[0].icon}@2x.png`}
+          src={`http://openweathermap.org/img/wn/${props.info.weather[0].icon}@4x.png`}
           alt="Weather image"
         />
         <StyledH1>{props.info.name}</StyledH1>
-        <StyledH3>
-          {props.info.weather[0].main} <br /> {Math.round(props.info.main.temp)}
-          °C
-        </StyledH3>
+        <StyledH2>
+          {Math.round(props.info.main.temp)}°C <br />
+        </StyledH2>
+        <StyledH3>{props.info.weather[0].main}</StyledH3>
       </ContainerCard>
     </Container>
   );
@@ -80,9 +85,16 @@ const StyledImg = styled.img`
 `;
 
 const StyledH1 = styled.h1`
-  font-size: 2.5rem;
+  font-size: 2rem;
   letter-spacing: 1.5;
   font-family: "Montserrat";
+`;
+
+const StyledH2 = styled.h2`
+  line-height: 1.5;
+  letter-spacing: 1.15;
+  font-family: "Montserrat";
+  font-size: 2.5rem;
 `;
 
 const StyledH3 = styled.h3`
