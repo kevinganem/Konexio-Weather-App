@@ -41,10 +41,11 @@ export default function Favorites() {
 
   function removeFavorites(param) {
     cityInfo.setFavorites((prevState) => {
-      let array = prevState;
+      let array = [...prevState];
       array.splice(param, 1);
       return array;
     });
+    setData([]);
   }
 
   useEffect(() => {
@@ -67,7 +68,7 @@ export default function Favorites() {
 
   return loading ? (
     <Container>
-      <div class="lds-ring">
+      <div className="lds-ring">
         <div></div>
         <div></div>
         <div></div>
